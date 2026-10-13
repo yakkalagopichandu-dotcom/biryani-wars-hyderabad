@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biryani Wars Hyderabad — Settle the Group Argument Right Now</title>
+  <meta name="description" content="Solve the classic friend group argument over where to go for the best Hyderabadi biryani right now using live voting, distance filters, secret local spots AI doesn't know about, and Dakhni street slang alerts.">
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient Aroma Steam & Saffron Particle Canvas -->
+  <canvas id="aroma-canvas"></canvas>
+
+  <div class="app-container">
+    <!-- Top Navigation -->
+    <header class="top-nav">
+      <div class="brand-badge">
+        <div class="brand-icon">🥘</div>
+        <div class="brand-text">
+          <h1>BIRYANI WARS HYDERABAD</h1>
+          <span>Vibe Coding Lounge • Solving Group Arguments Since 1591</span>
+        </div>
+      </div>
+
+      <nav class="nav-actions">
+        <button id="btn-sound-toggle" class="btn btn-secondary" title="Toggle Sound Effects">
+          🔊 Sound On
+        </button>
+        <button id="btn-open-slang-lab" class="btn btn-slang" title="Hyderabadi Slang Rule Engine">
+          🗣️ Slang Error Converter
+        </button>
+        <button id="btn-open-add-spot" class="btn btn-primary" title="Add a Secret Spot">
+          ➕ Add Secret Spot
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero Section & Live Argument Hub -->
+    <section class="hero-section">
+      <!-- Left: Atmospheric Hero Banner -->
+      <div class="hero-banner">
+        <div>
+          <div class="hero-tag">
+            <span>🔥 LIVE GROUP VOTING & DISTANCE FILTER</span>
+          </div>
+          <h2 class="hero-title">
+            Where are we going for <span class="highlight">Hyderabadi Biryani</span> right now?
+          </h2>
+          <p class="hero-description">
+            Stop shouting on WhatsApp. Vote live with your squad, filter by real travel distance, 
+            unlock secret spots that AI doesn't even know exist, and settle all ties with the Sullah Wheel!
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-val" id="stat-total-votes">463</span>
+            <span class="stat-label">Live Squad Votes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val" id="stat-leading-spot">Rumaan</span>
+            <span class="stat-label">Current Leader</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">12 Spots</span>
+            <span class="stat-label">Curated Spots</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">8 Hidden</span>
+            <span class="stat-label">AI Unaware Gems</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Live Group Argument & Tie Breaker Hub -->
+      <div class="argument-hub">
+        <div class="hub-header">
+          <h2>
+            <span class="pulse-indicator"></span>
+            Squad Argument Live Feed
+          </h2>
+          <span style="font-size: 0.75rem; color: var(--saffron-light); font-weight: 700; text-transform: uppercase;">
+            Active Deadlock Solver
+          </span>
+        </div>
+
+        <!-- Simulated Squad Chatter Box -->
+        <div class="squad-chat-box" id="squad-chat-box">
+          <div class="chat-bubble">
+            <div class="chat-avatar">🏍️</div>
+            <div class="chat-content">
+              <div class="chat-author">Arshad Bhai (Late-Night Rider)</div>
+              <div>"Bhai Rumaan chalo, last time ka tala hua gosht yaad hai na?" ➔ <strong>+1 for Hotel Rumaan</strong></div>
+            </div>
+          </div>
+          <div class="chat-bubble">
+            <div class="chat-avatar">💰</div>
+            <div class="chat-content">
+              <div class="chat-author">Zubair (Bargain Hunter)</div>
+              <div>"Pocket me chillar kam hai miyan, City Diamond best portion deta!" ➔ <strong>+1 for City Diamond</strong></div>
+            </div>
+          </div>
+          <div class="chat-bubble">
+            <div class="chat-avatar">👑</div>
+            <div class="chat-content">
+              <div class="chat-author">Kashif (Shaadi Food Connoisseur)</div>
+              <div>"Chicha's Masab Tank! Shahi dum biryani + marag combo is unmatchable." ➔ <strong>+1 for Chicha's</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hub Action Buttons -->
+        <div class="hub-actions">
+          <button id="btn-open-wheel" class="btn btn-spin-degh" title="Break Deadlocks with the Sullah Wheel">
+            🎡 Spin The Degh (Tie Breaker)
+          </button>
+          <button id="btn-toggle-sim" class="btn btn-simulate" title="Toggle Live Group Banter">
+            ⏸️ Pause Banter
+          </button>
+          <button id="btn-share-verdict" class="btn btn-secondary" title="Share Final Verdict to WhatsApp">
+            📱 WhatsApp Verdict
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Distance Console -->
+    <section class="filter-console">
+      <div class="filter-row-top">
+        <!-- Interactive Distance Slider -->
+        <div class="distance-slider-box">
+          <div class="slider-header">
+            <span class="slider-title">
+              <span>📍 Maximum Distance Filter</span>
+              <span class="slider-badge" id="distance-val-badge">12 km</span>
+            </span>
+            <span style="font-size: 0.75rem; color: var(--text-dim);">Live GPS Radius</span>
+          </div>
+          <input type="range" id="distance-range" class="distance-range" min="1" max="15" step="0.5" value="12">
+          <div class="distance-slang-label" id="distance-slang-label">
+            🚗 'Car me AC chala ke niklo — traffic jhelna padega'
+          </div>
+        </div>
+
+        <!-- Real-time Search Box -->
+        <div class="search-box-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search by spot name, locality, or secret tip...">
+        </div>
+      </div>
+
+      <!-- Filter Tag Pills -->
+      <div class="filter-pills-row" style="margin-bottom: 0.85rem;">
+        <span class="pill-label">Category:</span>
+        <button class="filter-pill active" data-category="all">All Spots</button>
+        <button class="filter-pill pill-secret" data-category="secret">🤫 Secret Spots (AI Doesn't Know)</button>
+        <button class="filter-pill" data-category="titan">👑 Legendary Titans</button>
+        <button class="filter-pill" data-category="late">🌙 Open Post-Midnight</button>
+        <button class="filter-pill" data-category="spicy">🔥 High Spice Level</button>
+      </div>
+
+      <!-- Locality Area Filter Pills -->
+      <div class="filter-pills-row">
+        <span class="pill-label">Neighborhood:</span>
+        <button class="filter-pill active" data-area="all">All Hyderabad</button>
+        <button class="filter-pill" data-area="Old City & South">🕌 Old City & South</button>
+        <button class="filter-pill" data-area="Tolichowki / Mehdipatnam">🍗 Tolichowki & Mehdipatnam</button>
+        <button class="filter-pill" data-area="Banjara / Masab Tank">💎 Banjara & Masab Tank</button>
+        <button class="filter-pill" data-area="Gachibowli / Madhapur">💻 Gachibowli & IT Corridor</button>
+        <button class="filter-pill" data-area="Abids / Basheerbagh">☕ Abids & Basheerbagh</button>
+      </div>
+    </section>
+
+    <!-- Main Content Header & Deadlock Notification -->
+    <div class="section-header-bar">
+      <div class="section-title">
+        <span>🍲 Live Biryani Leaderboard</span>
+        <span class="results-count" id="results-count">12 Spots Ready</span>
+      </div>
+
+      <!-- Deadlock Warning Pill -->
+      <div id="deadlock-indicator" style="display: none; align-items: center; gap: 0.5rem; background: rgba(225, 29, 72, 0.2); border: 1px solid var(--degh-red); padding: 0.4rem 0.9rem; border-radius: 100px; color: #fca5a5; font-size: 0.82rem; font-weight: 700;">
+        <span>⚔️ DEADLOCK DETECTED! TOP SPOTS TIED!</span>
+        <button onclick="app.openWheelModal()" style="background: var(--degh-red); color: white; border: none; padding: 0.2rem 0.6rem; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 700;">
+          SPIN WHEEL NOW
+        </button>
+      </div>
+    </div>
+
+    <!-- Biryani Food Spots Grid -->
+    <main class="spots-grid" id="spots-grid">
+      <!-- Dynamic Spot Cards Rendered by app.js -->
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 1: THE SULLAH (TIE BREAKER) WHEEL / SPIN THE DEGH
+       ========================================================================== -->
+  <div class="modal-overlay" id="modal-wheel">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="btn-close-wheel">&times;</button>
+      
+      <div class="modal-header">
+        <h2 class="modal-title">🎡 The Sullah Wheel: Spin The Degh</h2>
+        <p class="modal-subtitle">
+          When the group cannot agree and midnight hunger is peaking, let the sacred Biryani Chakra decide your destiny!
+        </p>
+      </div>
+
+      <!-- Wheel Graphic Canvas -->
+      <div class="wheel-container">
+        <div class="wheel-pointer"></div>
+        <canvas id="wheel-canvas" width="340" height="340"></canvas>
+        <div class="wheel-center-degh">🥘</div>
+      </div>
+
+      <!-- Action Button -->
+      <div style="text-align: center; margin-top: 1rem;">
+        <button id="btn-spin-wheel" class="btn btn-spin-degh" style="width: 100%; padding: 0.9rem; font-size: 1.05rem;">
+          🔥 KHATAM KARO LADAAYI — SPIN THE DEGH!
+        </button>
+      </div>
+
+      <!-- Winner Announcement Banner -->
+      <div id="wheel-winner-banner" class="wheel-winner-banner" style="display: none;">
+        <div class="winner-heading">👑 THE GROUP VERDICT HAS BEEN SEALED!</div>
+        <div class="winner-name" id="wheel-winner-name">Hotel Rumaan</div>
+        <div class="winner-tip" id="wheel-winner-tip">Ask for double masala!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: HYDERABADI DAKHNI STREET SLANG RULE ENGINE & ERROR LAB
+       ========================================================================== -->
+  <div class="modal-overlay" id="modal-slang-lab">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="btn-close-slang">&times;</button>
+
+      <div class="modal-header">
+        <h2 class="modal-title">🗣️ Hyderabadi Street Slang Rule Engine</h2>
+        <p class="modal-subtitle">
+          Quick Text Rule Engine that transforms boring corporate & developer error messages into hilarious local Dakhni street warnings (bad parking, mama log challans, flyover traffic jams, empty deghs).
+        </p>
+      </div>
+
+      <div class="slang-lab-container">
+        <!-- Interactive Testing Input Area -->
+        <div class="slang-input-area">
+          <label class="slang-label">Type any boring error message or test presets:</label>
+          <textarea id="slang-test-input" class="slang-textarea" placeholder="e.g. Error: Vehicle parking space unavailable at destination, severe traffic congestion on flyover...">Error: Vehicle parking space unavailable at destination</textarea>
+        </div>
+
+        <!-- Preset Quick Error Chips -->
+        <div class="slang-presets-row">
+          <span style="font-size: 0.75rem; color: var(--text-dim); align-self: center;">Try Presets:</span>
+          <button class="preset-chip" data-error="Warning: Severe vehicle parking space unavailable, towing zone active">🚨 Bad Parking</button>
+          <button class="preset-chip" data-error="Error: Heavy traffic congestion detected on flyover (ETA delay: 35 mins)">🚦 Flyover Jam</button>
+          <button class="preset-chip" data-error="Error 404: Biryani pot empty / Restaurant closed for the night">🥘 Degh Empty</button>
+          <button class="preset-chip" data-error="Error 403: You have already voted! Duplicate entry forbidden">✋ Duplicate Vote</button>
+          <button class="preset-chip" data-error="Error: Destination is out of range, outside city boundary">🗺️ Out of Range</button>
+          <button class="preset-chip" data-error="Warning: Deadlock tie detected between top candidates">⚔️ Deadlock Tie</button>
+          <button class="preset-chip" data-error="Error: Insufficient payment balance to split bill">💸 Bill Split Error</button>
+        </div>
+
+        <button id="btn-convert-slang" class="btn btn-primary" style="justify-content: center;">
+          ⚡ Transform to Dakhni Street Slang!
+        </button>
+
+        <!-- Slang Transformation Output Card -->
+        <div class="slang-result-card" id="slang-result-card">
+          <div class="slang-result-header">
+            <span class="slang-rule-badge" id="slang-lab-rule-id">Applied: Gaadi Parking & Challan Rule</span>
+            <span style="font-size: 0.75rem; color: var(--text-dim);">Live Rule Output</span>
+          </div>
+          <div class="slang-result-title" id="slang-lab-title">
+            🚨 ARREY BAAP RE! MAMA LOG KHADE HAI!
+          </div>
+          <div class="slang-result-body" id="slang-lab-body">
+            Ustaad! Wahan gaadi lagaye toh Traffic Police Mama log seedha challan kaatte ya gaadi utha ke lejaate! Footpath pe chadhane ka socho bhi nakko. Auto karke jao nai toh Metro pakdo, aaram se biryani khao!
+          </div>
+          <div class="slang-advice-bar" id="slang-lab-advice">
+            💡 Asli Street Salah: Gaadi dur galli me lagao ya seedha rapido / auto book karo!
+          </div>
+
+          <div class="slang-card-actions">
+            <button id="btn-speak-slang" class="btn btn-secondary" style="flex: 1; justify-content: center;">
+              🔊 Speak Aloud (TTS Voice)
+            </button>
+            <button id="btn-copy-slang" class="btn btn-secondary" style="flex: 1; justify-content: center;">
+              📋 Copy Slang Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: ADD CUSTOM SECRET SPOT
+       ========================================================================== -->
+  <div class="modal-overlay" id="modal-add-spot">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="btn-close-add">&times;</button>
+
+      <div class="modal-header">
+        <h2 class="modal-title">🤫 Add Your Secret Biryani Adda</h2>
+        <p class="modal-subtitle">
+          Got a hidden local food spot that generic AI algorithms don't know about? Enter it here and let the group vote on it!
+        </p>
+      </div>
+
+      <form id="form-add-spot" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div>
+          <label class="slang-label">Hotel / Spot Name *</label>
+          <input type="text" id="new-spot-name" class="search-input" placeholder="e.g. Hotel Al-Hamra" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label class="slang-label">Locality / Landmark *</label>
+            <input type="text" id="new-spot-location" class="search-input" placeholder="e.g. Near Shaikpet Dargah" required>
+          </div>
+          <div>
+            <label class="slang-label">Neighborhood Area</label>
+            <select id="new-spot-area" class="search-input" style="padding: 0.85rem;">
+              <option value="Tolichowki / Mehdipatnam">Tolichowki / Mehdipatnam</option>
+              <option value="Old City & South">Old City & South</option>
+              <option value="Banjara / Masab Tank">Banjara / Masab Tank</option>
+              <option value="Gachibowli / Madhapur">Gachibowli / Madhapur</option>
+              <option value="Abids / Basheerbagh">Abids / Basheerbagh</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label class="slang-label">Distance (km)</label>
+            <input type="number" id="new-spot-dist" class="search-input" min="0.5" max="25" step="0.5" value="3.5">
+          </div>
+          <div>
+            <label class="slang-label">Specialty Dish</label>
+            <input type="text" id="new-spot-specialty" class="search-input" placeholder="e.g. Tala Hua Gosht + Mutton Dum" required>
+          </div>
+        </div>
+
+        <div>
+          <label class="slang-label">Local Insider Secret Tip (What AI Doesn't Know) *</label>
+          <textarea id="new-spot-tip" class="slang-textarea" style="min-height: 70px;" placeholder="e.g. Ask the chokra for degh tal masala at 11:45 PM..."></textarea>
+        </div>
+
+        <div>
+          <label class="slang-label">Parking & Traffic Danger Warning</label>
+          <input type="text" id="new-spot-parking" class="search-input" placeholder="e.g. 🚨 High Risk: No parking, police tow truck always around!">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="padding: 0.85rem; justify-content: center; font-size: 1rem; margin-top: 0.5rem;">
+          🚀 Add Secret Spot to Live Vote!
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="slangRules.js"></script>
+  <script src="audio.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
